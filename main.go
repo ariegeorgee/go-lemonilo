@@ -4,7 +4,6 @@ import (
 	_ "golemonilo/routers"
 
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/session"
 
 	lemonilo "github.com/astaxie/beego"
@@ -15,8 +14,6 @@ func main() {
 		lemonilo.BConfig.WebConfig.DirectoryIndex = true
 		lemonilo.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
-	orm.Debug = true
-
 	sessionconf := &session.ManagerConfig{
 		CookieName: "begoosessionID",
 		Gclifetime: 3600,

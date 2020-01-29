@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
 	"golang.org/x/crypto/bcrypt"
@@ -13,11 +14,11 @@ func init() {
 
 	// set default database
 	conn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s",
-		"root",
-		"Kairos30121993",
-		"localhost",
-		"3306",
-		"golemonilo",
+		beego.AppConfig.String("dbuser"),
+		beego.AppConfig.String("dbsecret"),
+		beego.AppConfig.String("dbhost"),
+		beego.AppConfig.String("dbport"),
+		beego.AppConfig.String("dbname"),
 		"utf8")
 
 	orm.RegisterDataBase("default", "mysql", conn)
